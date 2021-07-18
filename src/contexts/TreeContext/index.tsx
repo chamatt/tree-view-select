@@ -1,5 +1,6 @@
 import { TreeItemData } from "components/TreeItem";
 import React, { createContext, useReducer } from "react";
+import { useDebounce, useLocalStorage,  } from "react-use";
 import { Action } from "./actions";
 import { TreeContextReducer } from "./reducers";
 
@@ -23,11 +24,23 @@ export const useTree = () => {
 };
 
 export const TreeContextProvider = ({ id, initialTree, children }: any) => {
+  const [persistedState, setPersistedState] = useLocalStorage(
+    `tree-view-${id}`,
+    initialTree
+  );
+
   const [state, dispatch] = useReducer(TreeContextReducer, {
     id,
-    tree: initialTree,
+    tree: persistedState,
   });
 
+  useDebounce(
+    () => {
+      setPersistedState(state.tree);
+    },
+    500,
+    [state.tree]
+  );
   return (
     <TreeContext.Provider value={{ state, dispatch }}>
       {children}
