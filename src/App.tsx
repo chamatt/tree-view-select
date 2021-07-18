@@ -1,7 +1,12 @@
-
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./themes";
 
 const App = () => {
-  return <div className="App">Placeholder</div>;
+  return (
+    <ChakraProvider theme={theme}>
+      <div>Placeholder</div>
+    </ChakraProvider>
+  );
 };
 
 export default App;
