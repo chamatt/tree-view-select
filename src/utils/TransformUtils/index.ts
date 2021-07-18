@@ -36,6 +36,10 @@ class TransformUtils {
       {}
     );
   };
+
+  static intersperse(arr: any[], sep: any): any[] {
+    return arr.reduce((a, v) => [...a, v, sep], []).slice(0, -1);
+  }
 }
 
 export default TransformUtils;

@@ -1,42 +1,22 @@
-import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
-import TreeItem, { TreeItemData } from "components/TreeItem";
+import { ChakraProvider, Text } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 import theme from "./themes";
 import { getTree } from "services/getTree";
-
-const childs: Record<string, TreeItemData> = {
-  "string.id": {
-    id: "test",
-    name: "name",
-    isSelected: false,
-    isOpen: false,
-    childItems: {},
-    parentPath: [],
-  },
-};
-const tree = getTree();
+import TreeView from "components/TreeView";
+import { useMemo } from "react";
 
 const App = () => {
-  const { isOpen: isSelected, onToggle: toggleSelect } = useDisclosure({
-    defaultIsOpen: false,
-  });
-  const { isOpen, onToggle: toggleOpen } = useDisclosure({
-    defaultIsOpen: false,
-  });
+  const initialTree = useMemo(() => {
+    return getTree();
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
       <Container>
-        {Object.values(tree).map((item) => (
-          <TreeItem
-            childItems={childs}
-            parentPath={[]}
-            isSelected={isSelected}
-            isOpen={isOpen}
-            toggleOpen={toggleOpen}
-            toggleSelect={toggleSelect}
-            {...item}
-          />
-        ))}
+        <Text fontSize="2xl" align="center" p="2">
+          Tree View
+        </Text>
+        <TreeView id="teste" initialTree={initialTree} />
       </Container>
     </ChakraProvider>
   );
