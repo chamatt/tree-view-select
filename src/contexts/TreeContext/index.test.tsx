@@ -1,7 +1,8 @@
 import { TreeItemData } from "components/TreeItem";
 import { render } from "tests/test-utils";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { TreeContextProvider, useTree } from ".";
+import { toggleOpen } from "./actions";
 
 const mockTree: Record<string, TreeItemData> = {
   "2469bdab-23b5-4cb8-90c9-c609a49410b0": {
@@ -83,5 +84,41 @@ describe("useTree", () => {
     expect(result.error).toEqual(
       new Error("useTree must be used within a TreeContextProvider")
     );
+  });
+
+  it("should update the persisted state after an update in the tree and a debounce timeout", () => {
+    jest.useFakeTimers();
+
+    jest.spyOn(global.localStorage, "getItem").mockReturnValue(null);
+
+    const setItemSpy = jest
+      .spyOn(global.localStorage, "setItem")
+      .mockImplementation(() => jest.fn());
+
+    const wrapper = ({ children }: any) => (
+      <TreeContextProvider id="test-1" initialTree={mockTree}>
+        {children}
+      </TreeContextProvider>
+    );
+
+    const { result } = renderHook(() => useTree(), { wrapper });
+
+    setItemSpy.mockClear();
+    const treeItem = Object.values(mockTree)[0];
+    act(() => {
+      result.current.dispatch(
+        toggleOpen({
+          id: treeItem.id,
+          parentPath: [],
+        })
+      );
+    });
+    expect(setItemSpy).not.toBeCalled();
+
+    jest.advanceTimersByTime(501);
+
+    expect(setItemSpy).toBeCalled();
+
+    jest.useRealTimers();
   });
 });

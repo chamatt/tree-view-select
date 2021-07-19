@@ -34,7 +34,6 @@ const TreeItem: React.FC<TreeItemData> = ({
   const handleSelect = () => dispatch(toggleSelect({ id, parentPath }));
   const handleOpen = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    if (isEmpty(childItems)) return;
     dispatch(toggleOpen({ id, parentPath }));
   };
 
@@ -53,6 +52,7 @@ const TreeItem: React.FC<TreeItemData> = ({
   return (
     <React.Fragment key={id}>
       <Button
+        data-testid={`tree-item-${id}`}
         borderRadius={0}
         variant="ghost"
         width="100%"
@@ -71,6 +71,13 @@ const TreeItem: React.FC<TreeItemData> = ({
         <Flex alignItems="center">
           <Flex padding="2">
             <Checkbox
+              data-testid={`checkbox-${
+                isSelected
+                  ? "checked"
+                  : indeterminate
+                  ? "indeterminate"
+                  : "unchecked"
+              }-${id}`}
               ref={checkboxRef}
               isReadOnly
               pointerEvents="none"

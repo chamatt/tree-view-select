@@ -32,7 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --collectCoverage",
-    "test:ci": "CI=1 react-scripts test --collectCoverage",
+    "test:ci": "CI=1 react-scripts test --collectCoverage --colors",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -63,10 +63,16 @@
       "prettier --write"
     ]
   },
-  "collectCoverageFrom": [
-    "src/**/*.{js,jsx}",
-    "!src/index.js"
-  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.tsx",
+      "<rootDir>/src/reportWebVitals.ts",
+      "<rootDir>/src/react-app-env.d.ts"
+    ]
+  },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.1"
   }
