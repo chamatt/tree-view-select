@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders placeholder", () => {
+test("renders header", () => {
   render(<App />);
-  const linkElement = screen.getByText(/placeholder/i);
-  expect(linkElement).toBeInTheDocument();
+  const headerElement = screen.getByText(/Tree View/i);
+  expect(headerElement).toBeInTheDocument();
 });

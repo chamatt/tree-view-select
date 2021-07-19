@@ -21,7 +21,7 @@ const AccordionIconButton: React.FC<AccordionIconButtonProps> = ({
         height: 30,
       }}
       padding={0}
-      aria-label="accordion button"
+      aria-label={`accordion button ${isOpen ? "open" : "closed"}`}
       icon={isOpen ? <ChevronUpIcon color="blue.400" /> : <ChevronDownIcon />}
       variant="ghost"
       hidden={hidden}

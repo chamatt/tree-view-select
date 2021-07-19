@@ -1,6 +1,6 @@
 import { TreeItemData } from "components/TreeItem";
 import React, { createContext, useReducer } from "react";
-import { useDebounce, useLocalStorage,  } from "react-use";
+import { useDebounce, useLocalStorage } from "react-use";
 import { Action } from "./actions";
 import { TreeContextReducer } from "./reducers";
 

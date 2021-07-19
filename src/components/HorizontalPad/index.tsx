@@ -6,7 +6,11 @@ interface HorizontalPadProps {
 
 const HorizontalPad: React.FC<HorizontalPadProps> = ({ children, depth }) => {
   const padding = depth * 8;
-  return <Box pl={`${padding}px`}>{children}</Box>;
+  return (
+    <Box pl={`${padding}px`} data-testid={`depth-${depth}`}>
+      {children}
+    </Box>
+  );
 };
 
 export default HorizontalPad;

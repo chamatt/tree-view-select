@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --collectCoverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -60,5 +60,12 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
+  },
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "!src/index.js"
+  ],
+  "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.1"
   }
 }

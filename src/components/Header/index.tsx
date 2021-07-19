@@ -17,8 +17,8 @@ const Header = () => {
       </Text>
       <Accordion allowToggle>
         <AccordionItem>
-          <h2>
-            <AccordionButton>
+          <h2 >
+            <AccordionButton data-testid="keyboard-navigation-header">
               <Box flex="1" textAlign="left">
                 Keyboard Navigation
               </Box>
@@ -26,14 +26,16 @@ const Header = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <div>
-              Next: <Kbd>tab</Kbd>
-            </div>
-            <div>
-              Previous: <Kbd>shift</Kbd> + <Kbd>tab</Kbd>
-            </div>
-            <div>
-              Select/Open: <Kbd>space</Kbd>
+            <div data-testid="keyboard-navigation-content">
+              <div>
+                Next: <Kbd>tab</Kbd>
+              </div>
+              <div>
+                Previous: <Kbd>shift</Kbd> + <Kbd>tab</Kbd>
+              </div>
+              <div>
+                Select/Open: <Kbd>space</Kbd>
+              </div>
             </div>
           </AccordionPanel>
         </AccordionItem>

@@ -56,4 +56,19 @@ describe("TransformUtils", () => {
       });
     });
   });
+
+  describe("intersperse", () => {
+    it("should add the element in between the other elements in the array", () => {
+      expect(TransformUtils.intersperse(["a", "b", "b"], "-")).toEqual([
+        "a",
+        "-",
+        "b",
+        "-",
+        "b",
+      ]);
+    });
+    it("should not change the array if length === 1 or length === 0", () => {
+      expect(TransformUtils.intersperse(["a"], "-")).toEqual(["a"]);expect(TransformUtils.intersperse([], "-")).toEqual([]);
+    });
+  });
 });
