@@ -60,20 +60,20 @@ Along with this repository, there's a file `data.json` containing the data to re
   }
 ```
 
-##### [](https://github.com/HiPlatform/prova-frontend#behaviour)Expected Behaviour:
+##### [](https://github.com/chamatt/tree-view-select#behaviour)Expected Behaviour:
 
 - For each item, the user must be able to check/uncheck the row checkbox.
 - For each item that has a children (that is, a parent item), when the user checks or unchecks the checkbox, the state must be cascated down to it's descendents.
 - For each item that's also a parent, the user must be able to show/hide the children.
 
-##### [](https://github.com/HiPlatform/prova-frontend#freedom)Leeway:
+##### [](https://github.com/chamatt/tree-view-select#freedom)Leeway:
 
 - You may use whatever tech stack best fits your skills.
-- You are free to structure you code the the way you deem best.
+- You are free to structure you code the way you deem best.
 - You are free to implement the code using any patterns you find most appropriate.
 - You can add functionalities to the component as you wish, but keep it simple.
 
-##### [](https://github.com/HiPlatform/prova-frontend#nice-to-have)We value attention to details in the following points:
+##### [](https://github.com/chamatt/tree-view-select#nice-to-have)We value attention to details in the following points:
 
 - Coupling and Cohesion
 - Tests
