@@ -32,6 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --collectCoverage",
+    "test:ci": "CI=1 react-scripts test --collectCoverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
