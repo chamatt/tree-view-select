@@ -2,7 +2,7 @@
 
 This repository is an implementation of a code challenge. You can find it's description below.
 
-You can try out the live version here: [https://tree-view-select.vercel.app](tree-view-select.vercel.app)
+You can try out the live version here: [tree-view-select.vercel.app](https://tree-view-select.vercel.app)
 
 Highlights:
 
