@@ -12,7 +12,10 @@ Highlights:
 - Uses Context API + useReducer for handling the logic of the application
 - The state of each tab is isolated and persisted in the localStorage using an individual id
 - It saves the state to localstorage after a 500ms debounce.
-- Uses Jest + React-Testing-Library to provide a good test coverage
+- Uses Jest + React-Testing-Library for testing
+- 100% test coverage
+
+![image](https://user-images.githubusercontent.com/20344348/126103168-0ee81ea8-ce5d-4aea-94cd-1b8c0d02f801.png)
 
 ## Available Commads
 
