@@ -169,6 +169,46 @@ describe("TreeItem", () => {
     ).toBeTruthy();
 
     expect(queryByTestId(`checkbox-checked-${mockItem.id}`)).toBeTruthy();
+  });
+
+  it("should select all children when clicking on a parent that is indeterminate", async () => {
+    const LiveComponent = () => {
+      const { state } = useTree();
+      return (
+        <TreeItem {...state.tree["2469bdab-23b5-4cb8-90c9-c609a49410b0"]} />
+      );
+    };
+
+    const { queryByTestId, getByLabelText, getByTestId } = render(
+      <TreeContextProvider initialTree={mockTree}>
+        <LiveComponent />
+      </TreeContextProvider>
+    );
+    expect(queryByTestId(`tree-item-${mockItem.id}`)).toBeVisible();
+    expect(
+      queryByTestId(`tree-item-97cd3a19-0f1c-4248-a84c-a1f5a0093a89`)
+    ).toBeFalsy();
+    openItem(getByLabelText);
+
+    await checkIsVisible(queryByTestId, "97cd3a19-0f1c-4248-a84c-a1f5a0093a89");
+
+    // selecting first child
+    toggleSelect(getByTestId, "97cd3a19-0f1c-4248-a84c-a1f5a0093a89");
+
+    expect(
+      queryByTestId(`checkbox-checked-97cd3a19-0f1c-4248-a84c-a1f5a0093a89`)
+    ).toBeTruthy();
+
+    expect(queryByTestId(`checkbox-indeterminate-${mockItem.id}`)).toBeTruthy();
+
+    // selecting indeterminate parent
+
+    toggleSelect(getByTestId, mockItem.id);
+
+    expect(queryByTestId(`checkbox-checked-${mockItem.id}`)).toBeTruthy();
+    expect(
+      queryByTestId(`checkbox-checked-12cd3a19-0f1c-4248-a84c-a1f5a0093a89`)
+    ).toBeTruthy();
 
   });
 });
