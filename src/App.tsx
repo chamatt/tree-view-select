@@ -1,3 +1,4 @@
+import "focus-visible/dist/focus-visible"
 import {
   ChakraProvider,
   Divider,
